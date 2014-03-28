@@ -22,7 +22,9 @@
 				<%= supporter.name %>
 			</td>
 			<td>
-				<%= supporter.email %>
+				<a href="mailto:<%= supporter.email %>">
+					<%= supporter.email %>
+				</a>
 			</td>
 			<td>
 				<%= supporter.department %>
