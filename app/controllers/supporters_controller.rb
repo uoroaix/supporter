@@ -12,10 +12,14 @@ class SupportersController < ApplicationController
 
 	def status
 		
-		@supporter.status = "Not Done" if @supporter.status = "Done"
-		@supporter.status = "Done" if @supporter.status = "Not Done"
-		@supporter.save
-		redirect_to list_path
+	if @supporter.status == "Done"
+		@supporter.status = "Not Done"
+	else
+		@supporter.status = "Done"
+	end
+
+	@supporter.save
+	redirect_to list_path
 
 	end
 
