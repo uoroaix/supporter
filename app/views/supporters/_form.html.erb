@@ -1,0 +1,68 @@
+<% if @supporter.errors.any? %>
+	<ul>
+		<% @supporter.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<div class="jumbotron">
+<%= form_for @supporter do |f| %>
+	
+	<table id="form">
+		<tr>
+			<td>
+				<%= f.label :name, "Your Full Name:" %>
+			</td>
+			<td colspan="3">
+				<%= f.text_field :name %>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<%= f.label :email, "Email Address:" %>
+			</td>
+			<td colspan="3">
+				<%= f.text_field :email %>
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<%= f.label :department, "Department:" %>
+			</td>
+			<td>
+				<%= f.radio_button :department, "Sales", :checked => true %>Sales
+			</td>
+			<td>
+				<%= f.radio_button :department, "Marketing" %>Marketing
+			</td>
+			<td>
+				<%= f.radio_button :department, "Technical" %>Technical
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<%= f.label :message, "Messages: " %>
+			</td>
+			<td colspan="3">
+				<%= f.text_area :message %>
+			</td>
+		</tr>
+
+		<tr>
+			<td></td>
+			<td>
+				  <%= f.submit button_label , class: "btn btn-default" %>
+			</td>
+			<td></td>
+			<td></td>
+		</tr>
+
+
+	</table>
+
+<% end %>
+</div>

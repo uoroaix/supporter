@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Support</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container-fluid">
+
+	<%= link_to "Home", root_path, class: "btn btn-default" %>
+	<%= link_to "New Request!",  new_supporter_path, class: "btn btn-default" %>
+	<%= link_to "Lists", list_path, class: "btn btn-default" %>
+
+<hr>
+<% if flash[:notice] || flash[:error] %>
+<h2><%= flash[:notice] || flash[:error] %></h2>
+<% end %>
+<%= yield %>
+
+</div>
+
+</body>
+</html>

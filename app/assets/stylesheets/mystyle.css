@@ -1,0 +1,20 @@
+.space {
+	margin:50px;
+}
+
+.field_with_errors {
+	background-color: red;
+}
+
+.jumbotron {
+	background-color:#F0E68C;
+}
+
+#form {
+	width:350px;
+}
+
+
+#list {
+	width:1000px;
+}

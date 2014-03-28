@@ -1,0 +1,47 @@
+
+<h1> Current Requests! </h1>
+<br>
+
+<div class="jumbotron">
+		<div class="row">
+
+	<table class="col-md-12 col-sm-12 col-xs-12 table table-striped table-hover">
+		<tr>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Department</th>
+			<th>Message</th>
+			<th>Actions</th>
+			<th>Status</th>
+		</tr>
+
+<% @supporters.each do |supporter| %>
+
+		<tr>
+			<td>
+				<%= supporter.name %>
+			</td>
+			<td>
+				<%= supporter.email %>
+			</td>
+			<td>
+				<%= supporter.department %>
+			</td>
+			<td>
+				<%= supporter.message %>
+			</td>
+			<td>
+				<%= button_to "Delete", supporter, method: :delete, data: {confirm: "Are you sure you want to delete this request?"}, class: "btn btn-default" %>
+				<%= button_to "Edit", edit_supporter_path(supporter), method: :get, class: "btn btn-default" %>
+			</td>
+			<td>
+				<%= button_to supporter.status, status_supporter_path(supporter), method: :get, class: "btn btn-default" %>
+			</td>
+		</tr>
+
+<% end %>
+
+
+	</table>
+</div>
+</div>
