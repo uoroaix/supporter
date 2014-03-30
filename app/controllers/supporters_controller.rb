@@ -2,24 +2,33 @@ class SupportersController < ApplicationController
 
 	before_action :find_supporter, only: [:show, :edit, :destroy, :update, :status]
 
-
 	def index
 	end
 
 	def list
-		@supporters = Supporter.all
+		@supporters = Supporter.all.paginate({per_page: 5, page: params[:page]})
+
+		session[:current_page] = params[:page]
+		
+		if params[:search]
+			@search_term = params[:search]
+			@supporters = @supporters.search_by(@search_term)
+		end
+
 	end
 
 	def status
-		
-	if @supporter.status == "Done"
-		@supporter.status = "Not Done"
-	else
-		@supporter.status = "Done"
-	end
+	
+		# session[:current_page] = params[:page]
 
-	@supporter.save
-	redirect_to list_path
+		if @supporter.status == "Done"
+			@supporter.status = "Not Done"
+		else
+			@supporter.status = "Done"
+		end
+
+		@supporter.save
+		redirect_to list_path(page: session[:current_page])
 
 	end
 
@@ -47,7 +56,7 @@ class SupportersController < ApplicationController
 	def update
 
 		if @supporter.update_attributes(supporter_attributes)
-			redirect_to list_path, notice: "Request edited successfully!"
+			redirect_to list_path(page: session[:current_page]), notice: "Request edited successfully!"
 		else
 			render :edit
 		end

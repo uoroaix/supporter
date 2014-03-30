@@ -15,9 +15,12 @@ gem 'bootstrap-sass', '~> 3.1.1.0'
 		gem "hirb"
 		gem "interactive_editor"
 		gem "awesome_print"
+		gem "faker"
 	end
 
 gem 'thin'
+gem "will_paginate"
+gem "will_paginate-bootstrap"
 
 
 # Use Uglifier as compressor for JavaScript assets
